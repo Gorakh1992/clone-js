@@ -1,0 +1,26 @@
+	phpmyadmin configuration
+----------------------------------------------
+sudo apt update
+sudo apt install phpmyadmin php-mbstring php-gettext
+sudo phpenmod mbstring
+sudo systemctl restart apache2
+sudo mysql
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Gorakh@321#';
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+mysql -u root -p
+
+sudo nano /etc/apache2/conf-available/phpmyadmin.conf
+
+Directory /usr/share/phpmyadmin>
+    Options SymLinksIfOwnerMatch
+    DirectoryIndex index.php
+    AllowOverride All
+    . . .
+
+sudo nano /usr/share/phpmyadmin/.htaccess
+sudo systemctl restart apache2
+sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
+
+
+
